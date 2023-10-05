@@ -14,20 +14,24 @@ app.listen(process.env.PORT,()=>{
 
 //to verify the callback url from dashboard side - cloud api side
 app.get("/webhook",(req,res)=>{
-   let mode=req.query["hub.mode"];
-   let challange=req.query["hub.challenge"];
-   let token=req.query["hub.verify_token"];
+//    let mode=req.query["hub.mode"];
+//    let challange=req.query["hub.challenge"];
+//    let token=req.query["hub.verify_token"];
 
+res.status(200).send({
+    "token":token,
+    'mytoken':mytoken,
+    'process.env.PORT,':process.env.PORT,
+});
+    // if(mode && token){
 
-    if(mode && token){
+    //     if(mode==="subscribe" && token===mytoken){
+    //         res.status(200).send(challange);
+    //     }else{
+    //         res.status(403);
+    //     }
 
-        if(mode==="subscribe" && token===mytoken){
-            res.status(200).send(challange);
-        }else{
-            res.status(403);
-        }
-
-    }
+    // }
 
 });
 
